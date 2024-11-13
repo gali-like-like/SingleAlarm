@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     -H 指定多少hour后提醒
     -P 指定提醒后的播放的音乐
     -T 指定具体时间后播放音乐
-    ps：AT和H/M/S互斥,必须有-P和其他的时间选项
+    ps：T和H/M/S互斥,必须有-P和其他的时间选项
     **/
     QCommandLineParser parser;
     // 其他选项，例如：
@@ -45,14 +45,7 @@ int main(int argc, char *argv[])
     convert.insert("H",3600);
     PlayMusicThread thread = PlayMusicThread();
     // 解析命令行参数
-
     parser.process(a);
-    // 如果需要，您可以获取其他选项的值，例如：
-    foreach (QString option, parser.optionNames()) {
-        qDebug()<<option<<":"<<parser.value(option);
-    }
-
-
     QMediaPlayer player = QMediaPlayer();
     QDateTime now = QDateTime::currentDateTime();
     QStringList options = parser.optionNames();
@@ -102,7 +95,6 @@ int main(int argc, char *argv[])
         qDebug()<<"P:"+musicPath;
         if(QFile::exists(musicPath)) {
             //判断文件的mime类型是否为音频
-            qDebug()<<"文件存在";
             QMimeType mimeType = QMimeDatabase().mimeTypeForFileNameAndData(musicPath,&file);
             qDebug()<<"name:"+mimeType.name()+",suffix name:"+mimeType.preferredSuffix();
             if(mimeType.name().contains("audio")) {
