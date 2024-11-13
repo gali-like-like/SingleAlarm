@@ -41,6 +41,6 @@ Remind.exe -S 30 -P D:\music\a.mp3
 ```
 Remind.exe -H 1 -M 30 -P D:\music\a.mp3
 ```
-**音频文件位置别放到C盘,程序有可能读取不到**
-**T和H/M/S互斥,必须有-P和其他的时间选项**
+**音频文件位置别放到C盘,程序有可能读取不到**   
+**T和H/M/S互斥,必须有-P和其他的时间选项**   
 **请务必遵守[GPL](https://www.gnu.org/licenses/gpl-3.0.html)**   
